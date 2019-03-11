@@ -154,13 +154,13 @@ class FW_Extension_Ajax_Blog extends FW_Extension {
     }
 
     public function getOptionFinal( $option_id, $default_value = '',
-                                    $atts = array() ) {
+            $atts = array() ) {
         $option = '';
         $obj    = get_queried_object();
         $atts   = shortcode_atts( array(
             'obj_ID' => get_queried_object_id(),
             'type'   => '',
-        ), (array) $atts );
+                ), (array) $atts );
 
         if ( !$atts[ 'type' ] ) {
             if ( is_singular() ) {
@@ -256,6 +256,7 @@ class FW_Extension_Ajax_Blog extends FW_Extension {
             'paged'            => $page ? $page : 1,
             'suppress_filters' => true,
             'post_type'        => 'post',
+            'post_status'      => 'publish'
         );
 
         if ( $order ) {
